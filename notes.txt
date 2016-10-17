@@ -1,0 +1,9 @@
+ng-app
+ng-init
+ng-model
+ng-binb
+ng-click
+ng-hide/ng-show
+ng-style/ng-class
+ng-repeat
+ng-src

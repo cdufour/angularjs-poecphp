@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>Angularjs</title>
+    <style>
+      .rouge {
+        color:red
+      }
+      img {
+        width:200px;
+        border:4px black solid;
+      }
+    </style>
+  </head>
+  <body ng-init="firstname='Victor';lastname='Hugo';age=85">
+    Nom <input type="text" ng-model="lastname">
+    Prénom <input type="text" ng-model="firstname">
+    <!-- les expressions angular (moustaches)
+    permettent d'afficher plusieurs variables
+    dans une même balise -->
+    <p>{{firstname}} {{lastname}} est mort à {{age}} ans</p>
+
+    <!--  ng-bind "remplit" automatiquement la propriété
+    innerText de la balise. Attention: ne rien mettre entre
+    les balises d'ouverture et de fermeture dans ce cas
+    <p ng-bind="firstname"></p>-->
+
+    <button ng-click="lastname='';firstname=''">Reset</button>
+
+    <div ng-init="compteur=0;alert=''">
+      <h2>Compteur de clics</h2>
+      <button ng-click="compteur=compteur+1;alert='rouge'">Clic</button>
+      <span>Tu as cliqué <strong ng-class="alert">{{compteur}}</strong> fois</span>
+      <p ng-show="compteur>10">Calme-toi !</p>
+    </div>
+
+    <!-- Lorsqu'on disposera de controlleurs, on pourra
+    invoquer des functions -->
+
+    <div ng-init="clients=['Hugo', 'Flaubert', 'Dib']">
+      <h2>Parcourir un tableau de strings en Angular</h2>
+      <ul>
+        <li ng-repeat="client in clients">{{client}}</li>
+      </ul>
+    </div>
+
+    <div ng-init="isChecked=true;writers=[{name:'Zola', country:'France'},{name:'Calvino', country:'Italie'},{name:'Hesse', country:'Allemagne'}]">
+      <h2>Parcourir un tableau d'objets (écrivains) en Angular</h2>
+      <input type="checkbox" ng-model="isChecked">
+
+      <span ng-show="!isChecked">Afficher</span>
+      <span ng-show="isChecked">Masquer</span> le tableau
+
+      <table ng-show="isChecked">
+        <tr ng-repeat="writer in writers">
+          <td>{{writer.name}}</td>
+          <td>{{writer.country}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div ng-init="selectedColor='orange';colors=['orange', 'green', 'blue', 'red']">
+      <h2>Tableau de couleurs</h2>
+      <select ng-model="selectedColor">
+        <option ng-repeat="color in colors">{{color}}</option>
+      </select>
+      <br>
+      Largeur de l'image
+      <input type="number" ng-model="imageWidth">
+      <br>
+      <img src="img/hugo.jpeg" style="border-color:{{selectedColor}};width:{{imageWidth}}px"/>
+    </div>
+
+    <div ng-init="photos=['hugo.jpeg', 'marchisio.png', 'pogba.jpg']">
+      <img ng-repeat="photo in photos" alt="{{photo}}" ng-src="img/{{photo}}">
+    </div>
+
+    <script src="scripts/angular.min.js"></script>
+  </body>
+</html>

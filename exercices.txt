@@ -1,0 +1,12 @@
+Initialiser une variable 'age' avec la valeur '85'
+et afficher cette variable dans la page
+
+Exemple: Victor Hugo est mort à 85 ans
+
+
+
+Proposer un champ de saisie à votre internaute
+lui permettant de modifier la largeur
+de l'image ciblée
+
+Ex: il tape 400 => l'image prend 400px de large
