@@ -1,81 +1,77 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="searchApp">
   <head>
     <meta charset="utf-8">
-    <title>Angularjs</title>
+    <title>Recherche avec Angular</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
-      .rouge {
-        color:red
-      }
-      img {
-        width:200px;
-        border:4px black solid;
+      th {
+        cursor:pointer;
       }
     </style>
   </head>
-  <body ng-init="firstname='Victor';lastname='Hugo';age=85">
-    Nom <input type="text" ng-model="lastname">
-    Prénom <input type="text" ng-model="firstname">
-    <!-- les expressions angular (moustaches)
-    permettent d'afficher plusieurs variables
-    dans une même balise -->
-    <p>{{firstname}} {{lastname}} est mort à {{age}} ans</p>
-
-    <!--  ng-bind "remplit" automatiquement la propriété
-    innerText de la balise. Attention: ne rien mettre entre
-    les balises d'ouverture et de fermeture dans ce cas
-    <p ng-bind="firstname"></p>-->
-
-    <button ng-click="lastname='';firstname=''">Reset</button>
-
-    <div ng-init="compteur=0;alert=''">
-      <h2>Compteur de clics</h2>
-      <button ng-click="compteur=compteur+1;alert='rouge'">Clic</button>
-      <span>Tu as cliqué <strong ng-class="alert">{{compteur}}</strong> fois</span>
-      <p ng-show="compteur>10">Calme-toi !</p>
-    </div>
-
-    <!-- Lorsqu'on disposera de controlleurs, on pourra
-    invoquer des functions -->
-
-    <div ng-init="clients=['Hugo', 'Flaubert', 'Dib']">
-      <h2>Parcourir un tableau de strings en Angular</h2>
+  <body>
+    <nav ng-controller="menuController">
       <ul>
-        <li ng-repeat="client in clients">{{client}}</li>
+        <li ng-repeat="menu in menus">
+          <a href="{{menu.url}}">{{menu.label}}</a>
+        </li>
       </ul>
-    </div>
+    </nav>
 
-    <div ng-init="isChecked=true;writers=[{name:'Zola', country:'France'},{name:'Calvino', country:'Italie'},{name:'Hesse', country:'Allemagne'}]">
-      <h2>Parcourir un tableau d'objets (écrivains) en Angular</h2>
-      <input type="checkbox" ng-model="isChecked">
+    <div ng-view></div>
 
-      <span ng-show="!isChecked">Afficher</span>
-      <span ng-show="isChecked">Masquer</span> le tableau
+    <div ng-controller="mainController">
+      Recherche par
+      <input type="text" ng-model="searchName" placeholder="nom">
+      <input type="text" ng-model="searchPostcode" placeholder="code postal">
 
-      <table ng-show="isChecked">
-        <tr ng-repeat="writer in writers">
-          <td>{{writer.name}}</td>
-          <td>{{writer.country}}</td>
-        </tr>
-      </table>
-    </div>
-
-    <div ng-init="selectedColor='orange';colors=['orange', 'green', 'blue', 'red']">
-      <h2>Tableau de couleurs</h2>
-      <select ng-model="selectedColor">
-        <option ng-repeat="color in colors">{{color}}</option>
+      par pays
+      <select ng-model="searchCountry">
+        <option value="">Tous</option>
+        <option>France</option>
+        <option>Italie</option>
+        <option>Roumanie</option>
       </select>
-      <br>
-      Largeur de l'image
-      <input type="number" ng-model="imageWidth">
-      <br>
-      <img src="img/hugo.jpeg" style="border-color:{{selectedColor}};width:{{imageWidth}}px"/>
-    </div>
 
-    <div ng-init="photos=['hugo.jpeg', 'marchisio.png', 'pogba.jpg']">
-      <img ng-repeat="photo in photos" alt="{{photo}}" ng-src="img/{{photo}}">
+      <!-- Affiche le nombre d'éléments après filtrage
+      par rapport au nombre total d'éléments -->
+      <span>{{clientsFiltered.length}} / {{clients.length}}</span>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th ng-click="changeOrder('name')">Nom</th>
+            <th ng-click="changeOrder('postcode')">Code postal</th>
+            <th ng-click="changeOrder('country')">Pays</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- clientsFiltered reçoit le tableau de clients filtrés
+          retourné par le filtre 'filter'-->
+          <tr ng-repeat="client in clientsFiltered = (clients |
+          filter:{
+            name:searchName,
+            postcode:searchPostcode,
+            country:searchCountry
+          }) |
+          orderBy:criterium:reverse">
+            <td>{{client.name | uppercase}}</td>
+            <td>{{client.postcode}}</td>
+            <td>{{client.country}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
 
     <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="app/app.js"></script>
+
+    <!-- controllers -->
+    <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/menuController.js"></script>
+    <script src="app/controllers/testController.js"></script>
   </body>
 </html>

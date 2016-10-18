@@ -7,3 +7,5 @@ ng-hide/ng-show
 ng-style/ng-class
 ng-repeat
 ng-src
+ng-controller
+ng-view
