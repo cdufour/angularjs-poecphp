@@ -3,9 +3,50 @@
   <head>
     <meta charset="utf-8">
     <title>Recherche avec Angular</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+      th {
+        cursor:pointer;
+      }
+    </style>
   </head>
-  <body>
-    {{2+2}}
+  <body ng-init="criterium='name';reverse=false;clients=[
+  {name:'Hugo', postcode:75014, password:123, country:'France'},
+  {name:'Carrara', postcode:67000, password:456, country:'Italie'},
+  {name:'El Khazraji', postcode:60160, password:789, country:'France'},
+  {name:'Sinescu', postcode:75007, password:123, country:'Roumanie'},
+  {name:'Kautzmann', postcode:67000, password:456, country:'Italie'}]">
+
+    Recherche par Nom
+    <input type="text" ng-model="searchName">
+    <br>
+    Recherche par Code postal
+    <input type="text" ng-model="searchPostcode">
+    <br>
+    Filtrer par pays
+    <select>
+      <option>France</option>
+      <option>Italie</option>
+      <option>Roumanie</option>
+    </select>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th ng-click="criterium='name';reverse=!reverse">Nom</th>
+          <th ng-click="criterium='postcode';reverse=!reverse">Code postal</th>
+          <th ng-click="criterium='country';reverse=!reverse">Pays</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="client in clients | filter:{name:searchName, postcode:searchPostcode} | orderBy:criterium:reverse">
+          <td>{{client.name | uppercase}}</td>
+          <td>{{client.postcode}}</td>
+          <td>{{client.country}}</td>
+        </tr>
+      </tbody>
+    </table>
+
 
     <script src="scripts/angular.min.js"></script>
   </body>
