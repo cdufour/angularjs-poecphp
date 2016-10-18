@@ -24,7 +24,7 @@
     <input type="text" ng-model="searchPostcode">
     <br>
     Filtrer par pays
-    <select>
+    <select ng-model="searchCountry">
       <option>France</option>
       <option>Italie</option>
       <option>Roumanie</option>
@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="client in clients | filter:{name:searchName, postcode:searchPostcode} | orderBy:criterium:reverse">
+        <tr ng-repeat="client in clients | filter:{name:searchName, postcode:searchPostcode, country:searchCountry} | orderBy:criterium:reverse">
           <td>{{client.name | uppercase}}</td>
           <td>{{client.postcode}}</td>
           <td>{{client.country}}</td>

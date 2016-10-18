@@ -10,3 +10,16 @@ lui permettant de modifier la largeur
 de l'image ciblée
 
 Ex: il tape 400 => l'image prend 400px de large
+
+
+
+
+
+
+Afficher les liens suivants à l'intérieur de la balise nav
+- home
+- contact
+- help
+
+les libellés des liens sont définis et fournis par le menuController
+Pour le moment les liens pointeront vers "#"
