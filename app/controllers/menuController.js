@@ -2,10 +2,11 @@ angular.module("searchApp")
   .controller("menuController", function($scope) {
   // tableau des menus
   var menus = [
-    {label: "Home", url:"/"},
-    {label: "Admin", url:"contact.html"},
+    {label: "Accueil", url:"#/"}, // gérée par angular
+    {label: "Admin", url:"#/admin"},
     {label: "Aide", url:"help.html"},
-    {label: "Test", url:"/#/test"}
+    {label: "Test", url:"#/test"} // url gérée
+    // par le routage angular (prefix: #)
   ];
 
   // on fournit les menus à la vue

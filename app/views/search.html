@@ -1,0 +1,43 @@
+<div ng-controller="mainController">
+  Recherche par
+  <input type="text" ng-model="searchName" placeholder="nom">
+  <input type="text" ng-model="searchPostcode" placeholder="code postal">
+
+  par pays
+  <select ng-model="searchCountry">
+    <option value="">Tous</option>
+    <option>France</option>
+    <option>Italie</option>
+    <option>Roumanie</option>
+  </select>
+
+  <!-- Affiche le nombre d'éléments après filtrage
+  par rapport au nombre total d'éléments -->
+  <span>{{clientsFiltered.length}} / {{clients.length}}</span>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th ng-click="changeOrder('name')">Nom</th>
+        <th ng-click="changeOrder('postcode')">Code postal</th>
+        <th ng-click="changeOrder('country')">Pays</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- clientsFiltered reçoit le tableau de clients filtrés
+      retourné par le filtre 'filter'-->
+      <tr ng-repeat="client in clientsFiltered = (clients |
+      filter:{
+        name:searchName,
+        postcode:searchPostcode,
+        country:searchCountry
+      }) |
+      orderBy:criterium:reverse">
+        <td>{{client.name | uppercase}}</td>
+        <td>{{client.postcode}}</td>
+        <td>{{client.country}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

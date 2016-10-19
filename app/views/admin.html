@@ -1,0 +1,14 @@
+<h1>Page d'administration</h1>
+<h2>Ajout d'un client</h2>
+<form>
+  <input type="text" placeholder="Nom" ng-model="client.name">
+  <input type="text" placeholder="Code postal" ng-model="client.postcode">
+  Pays: <select ng-model="client.country">
+    <option>Allemagne</option>
+    <option>France</option>
+    <option>Italie</option>
+    <option>Portugal</option>
+    <option>Roumanie</option>
+  </select>
+  <button ng-click="addClient()">Ajouter</button>
+</form>

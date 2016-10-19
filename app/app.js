@@ -9,8 +9,15 @@ angular.module("searchApp", ['ngRoute']);
 angular.module("searchApp")
   .config(function($routeProvider) {
     $routeProvider
+      .when('/',{
+        templateUrl:'app/views/search.html'
+      })
+      .when('/admin',{
+        templateUrl:'app/views/admin.html',
+        controller:'adminController'
+      })
       .when('/test',{
-        controller: 'testController',
+        controller:'testController',
         templateUrl:'app/views/test.html'
       });
   });
