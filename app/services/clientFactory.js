@@ -14,5 +14,17 @@ angular.module("searchApp")
       return clients;
     };
 
+    factory.getById = function(id) {
+      // Entrée: identifiant
+      // Sortie: 1 object (client)
+      var client = null;
+      clients.forEach(function(e) {
+        // lorsqu'une structure IF n'exécute qu'une seule instruction
+        // les accolades sont facultatives
+        if (id === e.id) client = e;
+      });
+      return client;
+    };
+
     return factory;
   }); // fin clientFactory

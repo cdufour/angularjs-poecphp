@@ -1,1 +1,7 @@
-<h1>Fiche client</h1>
+<h1>Fiche {{client.name | uppercase}}</h1>
+<p>Code postal: {{client.postcode}}</p>
+<p>Country: {{client.country}}</p>
+<img
+  class="client_img"
+  ng-src="img/clients/client_{{client.id}}.jpg"
+  alt="{{client.name}}">

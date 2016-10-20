@@ -4,8 +4,8 @@ angular.module("searchApp")
     // le service $routeParams permet de récupérer
     // les paramètres d'url
 
-    // identifiant du client
-    var clientId = $routeParams.id;
-    console.log(clientFactory.getAll());
+    // parseInt convertit chaîne de caractères en valeur numérique
+    var clientId = parseInt($routeParams.id);
+    $scope.client = clientFactory.getById(clientId);
 
   }); // fin clientController
