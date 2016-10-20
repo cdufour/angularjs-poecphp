@@ -8,8 +8,7 @@
     <option value="">Tous</option>
     <option
       ng-repeat="country in countries |
-      orderBy:'name' |
-      filter:{continent:'Europe'}">{{country.name}}</option>
+      orderBy:'name'">{{country.name}}</option>
   </select>
 
   <!-- Affiche le nombre d'éléments après filtrage

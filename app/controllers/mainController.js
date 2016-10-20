@@ -12,10 +12,8 @@ angular.module("searchApp")
   {name:'Sinescu', postcode:75007, password:123, country:'Roumanie'},
   {name:'Kautzmann', postcode:67000, password:456, country:'Italie'}];
 
-  $scope.countries = countryFactory.getAll();
+  $scope.countries = countryFactory.getByContinent("Europe");
 
-  // test
-  countryFactory.getByContinent("Afrique");
 
   // passage des clients à la vue via le scope
   //$scope.clients = data;

@@ -8,12 +8,14 @@
   </head>
   <body>
     <nav ng-controller="menuController">
-      <ul>
+      <ul class="nav navbar-nav">
         <li ng-repeat="menu in menus">
           <a href="{{menu.url}}">{{menu.label}}</a>
         </li>
       </ul>
     </nav>
+
+    <div class="clearfix"></div>
 
     <div ng-view></div>
 

@@ -5,7 +5,8 @@
   <input type="text" placeholder="Code postal" ng-model="client.postcode">
   <select ng-model="client.country">
     <option value="none">Choisir un pays</option>
-    <option ng-repeat="country in countries | orderBy:'name'">{{country.name}}</option>
+    <option
+    ng-repeat="country in countries | orderBy:'name'">{{country.name}}</option>
   </select>
   <button ng-click="addClient()">Ajouter</button>
 </form>

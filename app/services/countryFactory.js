@@ -22,13 +22,17 @@ angular.module("searchApp")
 
     factory.getByContinent = function(continent) {
       // la fonction reçoit en entrée un nom de continent
-      // elle retourne les pays appartenant au continent passé
-      // en entrée
-
-      // étape 1 : parcourir le tableau des pays
+      // elle retourne les pays appartenant au continent passé en entrée
+      var matchingCountries = [];
       countries.forEach(function(e) {
-        console.log(e.name);
-      });
+        if (continent === e.continent) {
+          // on ajoute au tableau matchingCountries
+          // l'élément correspondant au continent recherché
+          matchingCountries.push(e);
+        }
+      }); // fin forEach
+      // on renvoie le tableau des pays correspondant au continent recherché
+      return matchingCountries;
     };
 
     return factory;
