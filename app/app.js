@@ -10,14 +10,30 @@ angular.module("searchApp")
   .config(function($routeProvider) {
     $routeProvider
       .when('/',{
-        templateUrl:'app/views/search.html'
+        templateUrl:'app/views/search.html',
+        controller: 'mainController'
+      })
+      .when('/clients',{
+        templateUrl:'app/views/search.html',
+        controller:'mainController'
+      })
+      .when('/clients/:id',{
+        templateUrl:'app/views/client.html',
+        controller:'clientController'
       })
       .when('/admin',{
         templateUrl:'app/views/admin.html',
         controller:'adminController'
       })
+      .when('/help',{
+        templateUrl:'app/views/help.html',
+        controller:'helpController'
+      })
       .when('/test',{
         controller:'testController',
         templateUrl:'app/views/test.html'
-      });
+      })
+      .otherwise({redirectTo:'/'});
+      // redirection vers page d'accueil
+      // lorsque la route n'est pas trouvée
   });

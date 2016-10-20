@@ -10,13 +10,3 @@ ng-repeat
 ng-src
 ng-controller
 ng-view
-
-.success {
-color:green
-}
-
-.error {
-color:red
-}
-
-FACTORY/SERVICE

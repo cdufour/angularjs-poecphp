@@ -28,3 +28,17 @@ Afficher les liens suivants à l'intérieur de la balise nav
 
 les libellés des liens sont définis et fournis par le menuController
 Pour le moment les liens pointeront vers "#"
+
+
+Créer une route /help qui associera
+une view 'help.html' et un controller 'helpController'
+
+La vue (template) 'help.html' affichera:
+- un titre de niveau de niveau 1: 'Page d'aide'
+- un paragraphe: 'Enregistrer votre email pour recevoir de l'aide'
+- un formulaire contenant :
+  champ de saisie 'Email' et un bouton de validation
+
+Gérer le clic sur le bouton de validation =>
+  - si l'utisateur a bien saisi son email: on affiche 'bravo et merci'
+  - sinon: on affiche 'bbbbbbbbooooooooooohhhh'

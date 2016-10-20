@@ -4,7 +4,7 @@ angular.module("searchApp")
   var menus = [
     {label: "Accueil", url:"#/"}, // gérée par angular
     {label: "Admin", url:"#/admin"},
-    {label: "Aide", url:"help.html"},
+    {label: "Aide", url:"#/help"},
     {label: "Test", url:"#/test"} // url gérée
     // par le routage angular (prefix: #)
   ];

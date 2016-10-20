@@ -6,11 +6,11 @@ angular.module("searchApp")
   // afin que le controller puisse d'adresser à la vue
 
   var data = [
-  {name:'Hugo', postcode:75014, password:123, country:'France'},
-  {name:'Carrara', postcode:67000, password:456, country:'Italie'},
-  {name:'El Khazraji', postcode:60160, password:789, country:'France'},
-  {name:'Sinescu', postcode:75007, password:123, country:'Roumanie'},
-  {name:'Kautzmann', postcode:67000, password:456, country:'Italie'}];
+  {id:1, name:'Hugo', postcode:75014, password:123, country:'France'},
+  {id:2, name:'Carrara', postcode:67000, password:456, country:'Italie'},
+  {id:3, name:'El Khazraji', postcode:60160, password:789, country:'France'},
+  {id:4, name:'Sinescu', postcode:75007, password:123, country:'Roumanie'},
+  {id:5, name:'Kautzmann', postcode:67000, password:456, country:'Italie'}];
 
   $scope.countries = countryFactory.getByContinent("Europe");
 

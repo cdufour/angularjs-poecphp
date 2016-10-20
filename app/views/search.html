@@ -1,4 +1,4 @@
-<div ng-controller="mainController">
+<div>
   Recherche par
   <input type="text" ng-model="searchName" placeholder="nom">
   <input type="text" ng-model="searchPostcode" placeholder="code postal">
@@ -33,7 +33,9 @@
         country:searchCountry
       }) |
       orderBy:criterium:reverse">
-        <td>{{client.name | uppercase}}</td>
+        <td>
+          <a href="#/clients/{{client.id}}">{{client.name | uppercase}}</a>
+        </td>
         <td>{{client.postcode}}</td>
         <td>{{client.country}}</td>
       </tr>
