@@ -1,6 +1,6 @@
 angular.module("searchApp")
   .controller("adminController",
-    function($scope, $rootScope, $location, countryFactory) {
+    function($scope, $rootScope, $location, countryFactory, clientFactory) {
 
     // déclaration facultative (JS le fera de lui-même sinon)
     // d'un object client initialisé avec des valeurs null
@@ -10,6 +10,10 @@ angular.module("searchApp")
       name: null,
       postcode: null,
       country: null,
+      member: null,
+      nbOrders: null,
+      car: null,
+      yearMembership: null,
       password: null // propriété non gérée dans la vue (pas d'input)
     };
 
@@ -28,13 +32,17 @@ angular.module("searchApp")
       $scope.client.country !== "none"
       ) {
         // si les 3 conditions sont remplies
-        // on ajoute le client au tableau de clients
-        $scope.message = "Client ajouté avec succès";
-        $scope.messageClass = "success"; // applique la classe css
-        $rootScope.clients.push($scope.client);
+        clientFactory.add($scope.client)
+          .then(function(res) {
+            // on ajoute le client au tableau de clients
+            $scope.message = "Client ajouté avec succès";
+            $scope.messageClass = "success"; // applique la classe css
+            //$rootScope.clients.push($scope.client);
 
-        // redirection vers la page d'accueil
-        $location.path("/");
+            // redirection vers la page d'accueil
+            $location.path("/");
+          });
+
       } else {
         $scope.message = "Tous les champs sont obligatoires !";
         $scope.messageClass = "error"; // applique la classe css

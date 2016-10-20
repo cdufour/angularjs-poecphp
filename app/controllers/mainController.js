@@ -1,19 +1,11 @@
 angular.module("searchApp")
   .controller("mainController",
-    function($scope, $rootScope, countryFactory) {
+    function($scope, $rootScope, countryFactory, clientFactory) {
   // injection de dépendance
   // on fournit le service $scope en entrée de la function
   // afin que le controller puisse d'adresser à la vue
-
-  var data = [
-  {id:1, name:'Hugo', postcode:75014, password:123, country:'France'},
-  {id:2, name:'Carrara', postcode:67000, password:456, country:'Italie'},
-  {id:3, name:'El Khazraji', postcode:60160, password:789, country:'France'},
-  {id:4, name:'Sinescu', postcode:75007, password:123, country:'Roumanie'},
-  {id:5, name:'Kautzmann', postcode:67000, password:456, country:'Italie'}];
-
   $scope.countries = countryFactory.getByContinent("Europe");
-
+  $scope.message = "";
 
   // passage des clients à la vue via le scope
   //$scope.clients = data;
@@ -33,9 +25,20 @@ angular.module("searchApp")
     // on le crée (en lui donnant une valeur initiale)
     // nous avons résolu le problème de l'écrasement
     // systématique de $rootScope.clients par le tableau initial
-    $rootScope.clients = data;
-  }
 
+    // la liste des clients est fournie par clientFactory
+    //$rootScope.clients = clientFactory.getAll();
+
+    clientFactory.getAll().then(function(res) {
+      // on s'adresse au scope que lorsqu'on a la certitude
+      // que le server a renvoyé les données avec succès
+      $rootScope.clients = res.data;
+    }, function() {
+      // fonction de retour en cas d'erreur côté serveur
+      $scope.message = "Ne culpabilisez pas, le serveur est fautif";
+    });
+
+  }
 
   // initialisation des variables
   $scope.criterium = 'name';
