@@ -1,5 +1,6 @@
 angular.module("searchApp")
-  .controller("mainController", function($scope, $rootScope) {
+  .controller("mainController",
+    function($scope, $rootScope, countryFactory) {
   // injection de dépendance
   // on fournit le service $scope en entrée de la function
   // afin que le controller puisse d'adresser à la vue
@@ -10,6 +11,11 @@ angular.module("searchApp")
   {name:'El Khazraji', postcode:60160, password:789, country:'France'},
   {name:'Sinescu', postcode:75007, password:123, country:'Roumanie'},
   {name:'Kautzmann', postcode:67000, password:456, country:'Italie'}];
+
+  $scope.countries = countryFactory.getAll();
+
+  // test
+  countryFactory.getByContinent("Afrique");
 
   // passage des clients à la vue via le scope
   //$scope.clients = data;

@@ -3,12 +3,11 @@
 <form>
   <input type="text" placeholder="Nom" ng-model="client.name">
   <input type="text" placeholder="Code postal" ng-model="client.postcode">
-  Pays: <select ng-model="client.country">
-    <option>Allemagne</option>
-    <option>France</option>
-    <option>Italie</option>
-    <option>Portugal</option>
-    <option>Roumanie</option>
+  <select ng-model="client.country">
+    <option value="none">Choisir un pays</option>
+    <option ng-repeat="country in countries | orderBy:'name'">{{country.name}}</option>
   </select>
   <button ng-click="addClient()">Ajouter</button>
 </form>
+
+<div ng-class="messageClass">{{message}}</div>

@@ -12,6 +12,11 @@ de l'image ciblée
 Ex: il tape 400 => l'image prend 400px de large
 
 
+Remplacer les liste des pays dans le formulaire d'ajout
+de client (admin.html/adminController) par les
+pays que countryFactory fournit
+
+
 
 
 

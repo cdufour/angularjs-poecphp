@@ -6,9 +6,10 @@
   par pays
   <select ng-model="searchCountry">
     <option value="">Tous</option>
-    <option>France</option>
-    <option>Italie</option>
-    <option>Roumanie</option>
+    <option
+      ng-repeat="country in countries |
+      orderBy:'name' |
+      filter:{continent:'Europe'}">{{country.name}}</option>
   </select>
 
   <!-- Affiche le nombre d'éléments après filtrage
