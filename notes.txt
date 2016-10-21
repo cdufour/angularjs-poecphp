@@ -1,4 +1,9 @@
 https://github.com/cdufour/angularjs-poecphp
+
+Directives personnalisées:
+https://youtu.be/H7k-3G8dPvE
+
+Built-in directives
 ng-app
 ng-init
 ng-model
