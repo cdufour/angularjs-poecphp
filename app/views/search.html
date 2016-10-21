@@ -36,7 +36,8 @@
       }) |
       orderBy:criterium:reverse">
         <td>
-          <a href="#/clients/{{client.id}}">{{client.name | capitalize}}</a>
+          <a href="#/clients/{{client.id}}">
+            {{client.name | capitalize | ellipse:10}}</a>
         </td>
         <td>{{client.postcode}}</td>
         <td>{{client.country}}</td>
