@@ -4,7 +4,8 @@ angular.module("searchApp")
   // injection de dépendance
   // on fournit le service $scope en entrée de la function
   // afin que le controller puisse d'adresser à la vue
-  $scope.countries = countryFactory.getByContinent("Europe");
+  //$scope.countries = countryFactory.getByContinent("Europe");
+  $scope.countries = countryFactory.getAll();
   $scope.message = "";
 
   // passage des clients à la vue via le scope
@@ -12,7 +13,7 @@ angular.module("searchApp")
   // variante : on place les données au niveau du rootScope
   // afin que d'autres controllers aient accès à ces données
 
-  if ($rootScope.clients) {
+  //if ($rootScope.clients) {
     // si $rootScope.clients existe, s'il n'est pas Undefined
     //if ($rootScope.clients.length != data.length) {
       // la longueur des tableaux diffère, conclusion:
@@ -20,7 +21,7 @@ angular.module("searchApp")
       // l'interface d'administration, qui offre
       // justement des possibilités d'agir sur $rootScope.clients
     //}
-  } else {
+  //} else {
     // si $rootScope.data n'existe pas,
     // on le crée (en lui donnant une valeur initiale)
     // nous avons résolu le problème de l'écrasement
@@ -38,7 +39,7 @@ angular.module("searchApp")
       $scope.message = "Ne culpabilisez pas, le serveur est fautif";
     });
 
-  }
+  //}
 
   // initialisation des variables
   $scope.criterium = 'name';

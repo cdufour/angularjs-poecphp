@@ -36,4 +36,5 @@ angular.module("searchApp")
       .otherwise({redirectTo:'/'});
       // redirection vers page d'accueil
       // lorsque la route n'est pas trouvée
+
   });

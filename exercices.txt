@@ -42,3 +42,14 @@ La vue (template) 'help.html' affichera:
 Gérer le clic sur le bouton de validation =>
   - si l'utisateur a bien saisi son email: on affiche 'bravo et merci'
   - sinon: on affiche 'bbbbbbbbooooooooooohhhh'
+
+
+
+Créer un filter ellipseFilter
+qui renvoie les 10 premiers caractères de la chaîne filtrée
+suivi de trois points
+
+exemple:
+
+"Julio Cesar Santos de Maria" | ellipse
+=> Julio Cesar...
