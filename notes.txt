@@ -1,5 +1,7 @@
 https://github.com/cdufour/angularjs-poecphp
 
+opusidea@gmail.com
+
 Directives personnalisées:
 https://youtu.be/H7k-3G8dPvE
 

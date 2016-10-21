@@ -53,3 +53,18 @@ exemple:
 
 "Julio Cesar Santos de Maria" | ellipse
 => Julio Cesar...
+
+
+EXO FINAL
+Créer une petite SPA "carsApp" avec Angularjs.
+L'application proposera:
+- une vue affichant une liste de véhicules (3 colonnes/infos au choix)
+on pourra filter cette liste selon des critères au choix
+(nombre de places, présence de GPS, etc...)
+- une vue détaillée permettant d'afficher plus d'infos
+sur le véhicule cible
+Les données sont à charger par ajax à cette adresse:
+https://training-opusidea.c9users.io/cars
+
+https://training-opusidea.c9users.io/cars/:id
+// permet d'accéder à un véhicule en particulier

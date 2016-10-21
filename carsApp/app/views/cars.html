@@ -1,0 +1,13 @@
+<h1>Liste des véhicules</h1>
+<input type="text" ng-model="search">
+<table>
+  <tr ng-repeat="car in cars |
+  filter:search |
+  orderBy:'year':'reverse'">
+    <td>
+      <a href="#/cars/{{car.id}}">{{car.name}}</a>
+    </td>
+    <td>{{car.year}}</td>
+    <td>{{car.dailyRate}}</td>
+  </tr>
+</table>
